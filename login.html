@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and registration </title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-image: url('image/cc83d12eae1928be9a385446991a4543.jpg'); background-size: contain; background-repeat: no-repeat;">
+    <div class="login-page" id="page">
+        <div class="form">
+            <form action="" class="register-form" id="registerForm">
+                <input type="text" placeholder="user name">
+                <input type="text" placeholder="email id">
+                <input type="number" placeholder="Phone">
+                <input type="password" placeholder="password">
+                <input type="password" placeholder="confirm password">
+
+                <button>Create</button>
+                <p class="message"> Alredy Registered?<a href="" class="lin">Login</a></p>
+            </form>
+            <form action="" class="login-form" id="loginForm">
+                <input type="text" placeholder="user name" id="username">
+                <input type="password" placeholder="password" id="password">
+                <button type="button" onclick="getInfo()" id="">Login</button>
+                <p class="message">Not Registered?<a href="" id="register_link" class="lin">Register</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="js/jquery-3.4.1.js"></script> -->
+    <script src="javascript.js"></script>
+    <script>
+        var register_link = document.getElementById('register_link');
+        var loginForm = document.getElementById('loginForm');
+        var registerForm = document.getElementById('registerForm');
+        var fromLoginCheck = true;
+
+        register_link.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (fromLoginCheck) {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                register_link.innerText = 'Login';
+                fromLoginCheck = !fromLoginCheck;
+            } else {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                register_link.innerText = 'Register';
+                fromLoginCheck = !fromLoginCheck;
+            }
+        })
+// login
+        var obPerson = [
+	{ 
+		username: "media",
+		password: "media1234"
+	},
+	{
+		username: "gloire",
+		password: "gloire1234"
+	},
+	{
+		username: "boazi",
+		password: "boazi1234"
+	}
+
+]
+
+function getInfo() {
+	var username = document.getElementById('username').value
+	var password = document.getElementById('password').value
+
+	for(var i = 0; i < obPerson.length; i++) {
+		// check is user input matches username and password of a current index of the obPerson array
+		if(username == obPerson[i].username && password == obPerson[i].password) {
+            alert(username + " is logged in!!!")
+            window.location.href = 'student.html'
+			// stop the function if this is found to be true
+			return
+		}
+	}
+	alert("incorrect username or password")
+}
+
+
+    </script>
+
+</body>
+
+</html>
